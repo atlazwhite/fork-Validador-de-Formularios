@@ -70,7 +70,6 @@ function verificar (datos,ID) {
 		case "string":
 			var {values, error, tipo} = verificar_tipo(datos,ID);
 			return {values, error, tipo};
-			break;
 		case "number":
 			if (Number(datos)) {
 				var {values, error, tipo} = verificar_tipo(datos,ID);
@@ -79,11 +78,9 @@ function verificar (datos,ID) {
 				var {values, error} = verificar_privi(ID);
 				return {"values": values, "error": "No hay datos introducidos o Son Invalidos ---__---", "tipo": error};
 			}
-			break;
 		case "object":
 			var values = procesar_objeto(datos,ID);
 			return {values, error, tipo};
-			break;
 		default:
 			console.log("Unfinded");
 			break;
@@ -210,10 +207,8 @@ function verificar_privi (ID) {
 	switch (elemento) {
 		case "required":
 			return {"values": undefined, "error": `El Elemento ${apodo} es Requerido`};
-			break;
 		case "optional":
 			return {"values": "Opcional","error": `El Elemento ${apodo} es Opcional`};
-			break;
 		default:
 			console.log("Nada captado");
 			break;
@@ -263,28 +258,24 @@ function is_Empty (datos) {
 			} else {
 				return {"estado":true, "tipo": "string"};
 			}
-			break;
 		case "number":
 			if (!datos) {
 				return {"estado":false, "tipo": "number"};
 			} else {
 				return {"estado":true, "tipo": "number"};
 			}
-			break;
 		case "array":
 			if (datos.length === 0) {
 				return {"estado":false, "tipo": "array"};
 			} else {
 				return {"estado":true, "tipo": "array"};
 			}
-			break;
 		case "object":
 			if (Object.keys(datos).length === 0) {
 				return {"estado":false, "tipo": "object"};
 			} else {
 				return {"estado":true, "tipo": "object"};
 			}
-			break;
 		default:
 			console.log("Ningun Tipo Esperado");
 			break;
